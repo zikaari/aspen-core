@@ -1,6 +1,6 @@
 {
   "name": "aspen-core",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Sync dynamic nested objects with their flattened representation",
   "main": "dist/index.js",
   "typings": "dist/typings",
