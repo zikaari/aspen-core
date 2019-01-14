@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/neeksandhu/aspen-tree-model.git"
+    "url": "git+https://github.com/neeksandhu/aspen-core.git"
   },
   "keywords": [
     "nested",
@@ -27,9 +27,9 @@
   "author": "Neek Sandhu <neek.sandhu@outlook.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/neeksandhu/aspen-tree-model/issues"
+    "url": "https://github.com/neeksandhu/aspen-core/issues"
   },
-  "homepage": "https://github.com/neeksandhu/aspen-tree-model#readme",
+  "homepage": "https://github.com/neeksandhu/aspen-core#readme",
   "devDependencies": {
     "@types/jest": "^23.3.12",
     "@types/node": "^10.12.18",
