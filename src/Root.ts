@@ -118,6 +118,7 @@ export class Root extends Directory {
 		this.onceParentChangedWatchers = new WeakMap()
 		this.changeEventDispatchQueue = []
 		this.fswatchers = new Map()
+		this.terminateWatch = this.terminateWatch.bind(this)
 		super.setExpanded()
 	}
 
