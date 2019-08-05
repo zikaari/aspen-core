@@ -44,6 +44,6 @@
   "dependencies": {
     "notificar": "^1.0.1",
     "p-series": "^1.1.0",
-    "path-fx": "^2.1.0"
+    "path-fx": "^2.1.1"
   }
 }
