@@ -39,9 +39,9 @@ export class Directory extends FileEntry {
 	}
 
 	protected _children: Array<Directory | FileEntry>
-    /**
-     * Directory.children.length of self and all leafs (recursive) with isExpanded = true
-     */
+	/**
+	 * Directory.children.length of self and all leafs (recursive) with isExpanded = true
+	 */
 	protected _branchSize: number
 	protected flattenedBranch: Uint32Array
 	private isExpanded: boolean
@@ -229,6 +229,11 @@ export class Directory extends FileEntry {
 
 		super.mv(to, newName)
 
+		// when `to` is null, it means the item is detached from the tree and disposed off
+		if (this.disposed) {
+			return
+		}
+
 		if (typeof this.watchTerminator === 'function') {
 			this.watchTerminator(prevPath)
 			// If we got children, we gotta watch em'!
@@ -245,11 +250,11 @@ export class Directory extends FileEntry {
 		}
 	}
 
-    /**
-     * WARNING: This will only stop watchers and clear bookkeeping records
-     * To clean-up flattened branches and stuff, call Directory#removeItem in the parent
-     * Directory#removeItem will call Directory#dispose anyway
-     */
+	/**
+	 * WARNING: This will only stop watchers and clear bookkeeping records
+	 * To clean-up flattened branches and stuff, call Directory#removeItem in the parent
+	 * Directory#removeItem will call Directory#dispose anyway
+	 */
 	protected dispose() {
 		if (typeof this.watchTerminator === 'function') {
 			this.watchTerminator(this.path)
@@ -330,7 +335,7 @@ export class Directory extends FileEntry {
 		}
 		this._branchSize = flatTree.length
 		this.setFlattenedBranch(flatTree)
-		if ( typeof this.watchTerminator === 'function') {
+		if (typeof this.watchTerminator === 'function') {
 			this.watchTerminator(this.path)
 		}
 

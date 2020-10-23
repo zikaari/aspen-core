@@ -93,9 +93,9 @@ export class FileEntry {
 	public mv(to: Directory, fname: string = this.fileName) {
 		const prevParent = this._parent
 		if (to === null || to.type !== FileType.Directory) { // that's the best check we can do; `parent instanceof Directory` causes a cyclic dependency
+			this.dispose()
 			this._parent = null
 			prevParent.unlinkItem(this)
-			this.dispose()
 			return
 		}
 		const didChangeParent = prevParent !== to
