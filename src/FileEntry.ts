@@ -44,7 +44,6 @@ export class FileEntry {
 		this._metadata = { ...(optionalMetadata || {}) }
 		this._depth = parent ? parent.depth + 1 : 0
 		if (parent && typeof fileName === 'string') {
-			fileName = root.pathfx.basename(fileName)
 			this._fileName = fileName
 		}
 		FileEntry.idToFileEntry.set(this._uid, this)
@@ -78,7 +77,11 @@ export class FileEntry {
 			throw new Error(`orphaned/detached FileEntries don't have path (except Root)`)
 		}
 		if (!this.resolvedPathCache) {
-			this.resolvedPathCache = this.root.pathfx.join(this.parent.path, this.fileName)
+			if (this.root.pathfx.isRelative(this.fileName)) {
+				this.resolvedPathCache = this.root.pathfx.join(this.parent.path, this.fileName)
+			} else {
+				this.resolvedPathCache = this.fileName
+			}
 		}
 		return this.resolvedPathCache
 	}
