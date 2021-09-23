@@ -27,7 +27,7 @@ function spliceTypedArray(arr: Uint32Array, start: number, deleteCount: number =
 }
 
 export class Directory extends FileEntry {
-	private static defaultSortComparator(a: FileEntry | Directory, b: FileEntry | Directory) {
+	public static defaultSortComparator(a: FileEntry | Directory, b: FileEntry | Directory) {
 		if (a.constructor === b.constructor) {
 			return a.fileName > b.fileName ? 1
 				: a.fileName < b.fileName ? -1
